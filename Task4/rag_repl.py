@@ -1,10 +1,18 @@
-from rag_core import load_vectorstore, answer_query
+from rag_core import load_vectorstore, answer_query, get_security_flags
 
+def print_security_flags(flags: dict):
+    print("Security configuration:")
+    print(f"- Pre-prompt protection: {'ENABLED' if flags['ENABLE_PRE_PROMPT'] else 'DISABLED'}")
+    print(f"- Post-filter (malicious chunks): {'ENABLED' if flags['ENABLE_POST_FILTER'] else 'DISABLED'}")
+    print(f"- Context sanitization: {'ENABLED' if flags['ENABLE_SANITIZE'] else 'DISABLED'}")
+    print("")
 
 def main():
     db, _ = load_vectorstore()
-
-    print("RAG REPL. Введите вопрос. Для выхода: Ctrl+C")
+    
+    flags = get_security_flags()
+    print("RAG Bot started. Для выхода: Ctrl+C")
+    print_security_flags(flags)
     print("Примеры запросов, которые можно попробовать:")
     print("- Что такое Synth Flux?")
     print("- Кто такие Aster Monks?")

@@ -8,7 +8,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 
-KNOWLEDGE_DIR = "../Task2/knowledge_base"
+KNOWLEDGE_DIR = "Task2/knowledge_base"
 INDEX_DIR = "faiss_index"
 
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
